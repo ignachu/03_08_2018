@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+<title>Primera</title>
+</head>
+<body>
+<!--Nada más que p5.js para dibujar en el body de esta página-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+<script>
+    
+    //serbia,Foodstuffs,Wine,4.565.137.890.625
+//croacia,Foodstuffs,Wine,183.664.359.375
+//hungria,Foodstuffs,Wine,173.686.765.625
+//France,Foodstuffs,Wine,32.631.765.625
+//eslovenia,Foodstuffs,Wine,25.399.996.875
+//luxemburgo,Foodstuffs,Wine,9.621.609.375
+
+    
+    
+var exportacion = 
+    
+    {
+  
+    croacia:18.3664359375,
+        hungria:17.3686765625,
+        francia:3.2631765625,
+        eslovenia:2.5399996875,
+        luxemburgo:0.9621609375,
+        
+    }
+    
+   
+
+    
+
+  
+    
+function setup(){
+  var canvas = createCanvas(windowWidth,500);
+  canvas.position(0,0)
+  noStroke();
+  smooth();
+   
+}
+function draw(){
+  background(86, 7, 12);
+  fill(255)
+     
+  ellipse(250, height/2+40, exportacion.croacia*9, exportacion.croacia*9);
+    textSize(20);
+    textAlign(CENTER);
+    text('Croacia', 250, height/3+5);
+    
+  ellipse(450, height/2+40, exportacion.hungria*9, exportacion.hungria*9);
+    textSize(20);
+     textAlign(CENTER);
+    text('Hungria', 450, height/3+5);
+    
+    ellipse(650, height/2+40, exportacion.francia*9, exportacion.francia*9);
+    textSize(20);
+     textAlign(CENTER);
+    text('Francia', 650, height/3+5);
+    
+    ellipse(850, height/2+40, exportacion.eslovenia*9, exportacion.eslovenia*9);
+    textSize(20);
+     textAlign(CENTER);
+    text('Eslovenia', 850, height/3+5);
+    
+    ellipse(1050, height/2+40, exportacion.luxemburgo*9, exportacion.luxemburgo*9);
+    textSize(20);
+     textAlign(CENTER);
+    text('Luxemburgo', 1050, height/3+5);
+    
+     
+    }
+function windowResized() {
+  resizeCanvas(windowWidth, 500);
+}   
+</script>
+</body>
+</html>

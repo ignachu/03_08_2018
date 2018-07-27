@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+<title>Primera</title>
+</head>
+<body>
+<!--Nada más que p5.js para dibujar en el body de esta página-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+<script>
+    
+//francia,,,,metals,,refined_copper,534371712
+//italia,,,,metals,,refined_copper,470098464
+//holanda,,,,metals,,refined_copper,428288576
+//espaÃ±a,,,,metals,,refined_copper,130469360
+//Aaemania,,,,metals,,refined_copper,14315928
+    
+    
+    
+    
+var exportacion = 
+    
+    {
+  
+    francia:5.34371712,
+        italia:4.70098464,
+        holanda:4.28288576,
+        espana:1.30469360,
+        alemania:0.14315928,
+        
+    }
+    
+   
+
+    
+
+  
+    
+function setup(){
+  var canvas = createCanvas(windowWidth,500);
+  canvas.position(0,0)
+  noStroke();
+  smooth();
+   
+}
+function draw(){
+  background(184, 115, 51);
+  fill(255)
+     
+  ellipse(550, height/2+40, exportacion.francia*25, exportacion.francia*25);
+    textSize(20);
+    textAlign(CENTER);
+    text('Francia', 550, height/3+5);
+    
+  ellipse(750, height/2+40, exportacion.italia*25, exportacion.italia*25);
+    textSize(20);
+     textAlign(CENTER);
+    text('Italia', 750, height/3+5);
+    
+    ellipse(950, height/2+40, exportacion.holanda*25, exportacion.holanda*25);
+    textSize(20);
+     textAlign(CENTER);
+    text('Holanda', 950, height/3+5);
+    
+    ellipse(1150, height/2+40, exportacion.espana*25, exportacion.espana*25);
+    textSize(20);
+     textAlign(CENTER);
+    text('España', 1150, height/3+5);
+    
+    ellipse(1350, height/2+40, exportacion.alemania*25, exportacion.alemania*25);
+    textSize(20);
+     textAlign(CENTER);
+    text('Alemania', 1350, height/3+5);
+    
+     
+    }
+function windowResized() {
+  resizeCanvas(windowWidth, 500);
+}   
+</script>
+</body>
+</html>
