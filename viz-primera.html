@@ -3,82 +3,74 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
-<title>Primera</title>
+<title>Vino</title>
 </head>
-<body>
-<!--Nada más que p5.js para dibujar en el body de esta página-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
-<script>
-    
-    //serbia,Foodstuffs,Wine,4.565.137.890.625
-//croacia,Foodstuffs,Wine,183.664.359.375
-//hungria,Foodstuffs,Wine,173.686.765.625
-//France,Foodstuffs,Wine,32.631.765.625
-//eslovenia,Foodstuffs,Wine,25.399.996.875
-//luxemburgo,Foodstuffs,Wine,9.621.609.375
-
-    
-    
-var exportacion = 
-    
-    {
-  
-    croacia:18.3664359375,
-        hungria:17.3686765625,
-        francia:3.2631765625,
-        eslovenia:2.5399996875,
-        luxemburgo:0.9621609375,
-        
-    }
-    
-   
-
-    
-
-  
-    
-function setup(){
-  var canvas = createCanvas(windowWidth,500);
-  canvas.position(0,0)
-  noStroke();
-  smooth();
-   
-}
-function draw(){
-  background(86, 7, 12);
-  fill(255)
-     
-  ellipse(250, height/2+40, exportacion.croacia*9, exportacion.croacia*9);
-    textSize(20);
-    textAlign(CENTER);
-    text('Croacia', 250, height/3+5);
-    
-  ellipse(450, height/2+40, exportacion.hungria*9, exportacion.hungria*9);
-    textSize(20);
-     textAlign(CENTER);
-    text('Hungria', 450, height/3+5);
-    
-    ellipse(650, height/2+40, exportacion.francia*9, exportacion.francia*9);
-    textSize(20);
-     textAlign(CENTER);
-    text('Francia', 650, height/3+5);
-    
-    ellipse(850, height/2+40, exportacion.eslovenia*9, exportacion.eslovenia*9);
-    textSize(20);
-     textAlign(CENTER);
-    text('Eslovenia', 850, height/3+5);
-    
-    ellipse(1050, height/2+40, exportacion.luxemburgo*9, exportacion.luxemburgo*9);
-    textSize(20);
-     textAlign(CENTER);
-    text('Luxemburgo', 1050, height/3+5);
-    
-     
-    }
-function windowResized() {
-  resizeCanvas(windowWidth, 500);
-}   
-</script>
-</body>
+ <body>
+      <!--Nada más que p5.js para dibujar en el body de esta página-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+      <script>
+         //más de 3 campeonatos
+         
+         var exportacion = [
+            {
+               club:"Croacia",
+               dolares:183,
+               subcampeonatos:20,
+               temporada_campeonato:[1937,1939,1941,1944,1947,1953,1956,1960,1963,1970,1972,1979,1981,1983,1986,1989,1990,1991,1993,1996,1997,1998,2002,2006,2006,2007,2007,2008,2009,2014,2015,2017],
+               temporada_subcampeonato:[1933,1943,1952,1954,1955,1958,1959,1966,1973,1982,1987,1992,1997,2003,2003,2008,2010,2015,2016,2017]
+            },
+            {
+               club:"Hungria",
+               dolares:173,
+               subcampeonatos:8,
+               temporada_campeonato:[1940,1959,1962,1964,1965,1967,1969,1994,1995,1999,2000,2004,2009,2011,2011,2012,2014,2017],
+               temporada_subcampeonato:[1957,1961,1963,1971,1980,1998,2005,2006]
+            },
+            {
+               club:"Francia",
+               dolares:32,
+               subcampeonatos:21,
+               temporada_campeonato:[1949,1954,1961,1966,1984,1987,1997,2002,2005,2010,2016,2016],
+               temporada_subcampeonato:[1962,1964,1965,1967,1968,1989,1990,1994,1995,1996,1997,1999,2001,2002,2007,2009,2011,2013,2013,2014,2015]
+            },
+            {
+               club:"Eslovenia",
+               dolares:25,
+               subcampeonatos:8,
+               temporada_campeonato:[1980,1982,1985,1988,1992,2003,2003,2004],
+               temporada_subcampeonato:[1978,1979,1981,1983,1993,2000,2004,2011]
+            },
+            {
+               club:"Luxemburgo",
+               dolares:9,
+               subcampeonatos:10,
+               temporada_campeonato:[1943,1951,1973,1975,1977,2005,2013],
+               temporada_subcampeonato:[1945,1948,1950,1970,1972,1976,2004,2009,2012,2017]
+            }
+         ]
+         
+         function setup(){
+           var canvas = createCanvas(windowWidth,500);
+           canvas.position(0,0)
+           noStroke();
+           smooth();
+           noLoop();
+         }
+         function draw(){
+           background(155);
+           textAlign(CENTER);
+            for (var a = 0; a < exportacion.length; a++){
+             textSize(11);
+             fill(255);  
+             text(exportacion[a].club, width/(exportacion.length+1)*(a+1), height/1.8);
+             textSize(2.5 * exportacion[a].dolares/3);
+             text(exportacion[a].dolares, width/(exportacion.length+1)*(a+1), height/2);
+            }
+         } 
+         function windowResized() {
+           resizeCanvas(windowWidth, 500);
+         }   
+      </script>
+   </body>
 </html>

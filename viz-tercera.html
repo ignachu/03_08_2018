@@ -3,84 +3,54 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
-<title>Primera</title>
+<title>Pescado</title>
 </head>
 <body>
-<!--Nada más que p5.js para dibujar en el body de esta página-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
-<script>
+    <!--Nada más que p5.js para dibujar en el body de esta página-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+    <script>
+        var datos;
 
-    
-   // italia,animal_products,fish,580.359.985.351.562
-//alemania,animal_products,fish,120.069.999.694.824
-//espaÃ±a,animal_products,fish,91.519.404.296.875
-//rusia,animal_products,fish,26.975.240.234.375
-//bulgaria,animal_products,fish,4.156.969.140.625
+        function preload() {
+            datos = loadTable('https://raw.githubusercontent.com/profesorfaco/dno037-2018-06/gh-pages/data/poblacion.csv', 'csv', 'header');
+        }
 
+        function setup() {
+            console.log(datos);
+            console.log(datos.getRowCount() + ' son las filas en la tabla');
+            console.log(datos.getColumnCount() + ' son las columnas en la tabla');
+            var canvas = createCanvas(windowWidth, 500);
+            canvas.position(0, 0)
+            smooth();
+            noLoop();
+            noStroke();
+            background(200);
+        }
 
-    
-    
-    
-    var exportacion = 
-    
-    {
-  
-    rusia: 2.6975240234375,
-    italia: 58.0359985351562,
-    bulgaria: 0.4156969140625,
-    espana: 9.1519404296875,
-    alemania: 12.0069999694824,
-        
-    }
-    
-   
+        function draw() {
+            fill(0, 150);
+            textAlign(CENTER);
+            textStyle(BOLD);
+            beginShape();
+            vertex(0, height)
+            for (var a = 0; a < datos.getRowCount(); a++) {
+                var habitantes = datos.get(a, 1);
+                var posX = (windowWidth / (datos.getRowCount() + 1)) * (a + 1);
+                var posY = map(habitantes, 0, 7112808, (height - 50), 100);
+                vertex(posX, posY);
+                var region = datos.get(a, 0);
+                textSize(11);
+                text(region + '\n•', posX, posY - 10);
+            }
+            vertex(width, height);
+            endShape(CLOSE);
 
-    
+        }
 
-  
-    
-function setup(){
-  var canvas = createCanvas(windowWidth,500);
-  canvas.position(0,0)
-  noStroke();
-  smooth();
-   
-}
-function draw(){
-  background(255, 145, 110);
-  fill(255)
-     
-  ellipse(250, height/2+40, exportacion.italia*3, exportacion.italia*3);
-    textSize(20);
-    textAlign(CENTER);
-    text('Italia', 250, height/3+5);
-    
-  ellipse(450, height/2+40, exportacion.alemania*3, exportacion.alemania*3);
-    textSize(20);
-     textAlign(CENTER);
-    text('Alemania', 450, height/3+5);
-    
-    ellipse(650, height/2+40, exportacion.espana*3, exportacion.espana*3);
-    textSize(20);
-     textAlign(CENTER);
-    text('España', 650, height/3+5);
-    
-    ellipse(850, height/2+40, exportacion.rusia*3, exportacion.rusia*3);
-    textSize(20);
-     textAlign(CENTER);
-    text('Rusia', 850, height/3+5);
-    
-    ellipse(1050, height/2+40, exportacion.bulgaria*3, exportacion.bulgaria*3);
-    textSize(20);
-     textAlign(CENTER);
-    text('Bulgaria', 1050, height/3+5);
-    
-     
-    }
-function windowResized() {
-  resizeCanvas(windowWidth, 500);
-}   
-</script>
+        function windowResized() {
+            resizeCanvas(windowWidth, 500);
+        }
+    </script>
 </body>
 </html>
